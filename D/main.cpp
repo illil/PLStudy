@@ -8,8 +8,22 @@ int main()
 
 	Stack stack;
 	stack.Push(3);
+	stack.Push(2);
+	stack.Push(12);
 	
-	int data;
-	stack.TryPeek(data);
+	while ( stack.Count()> 0)
+	{
+		std::cout << stack.Pop() << std::endl;
+	}
+
+	stack.Push(3);
+	stack.Push(2);
+	stack.Push(12);
+
+	while (stack.Count()> 0)
+	{
+		std::cout << stack.Pop() << std::endl;
+	}
+
 	return 0;
 }
