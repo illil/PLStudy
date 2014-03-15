@@ -1,29 +1,15 @@
 #include <iostream>
 #include "String.h"
 #include "Stack.h"
-
+#include "factorial.h"
+#include "fibonacci.h"
 
 int main()
 {
-
-	Stack stack;
-	stack.Push(3);
-	stack.Push(2);
-	stack.Push(12);
-	
-	while ( stack.Count()> 0)
-	{
-		std::cout << stack.Pop() << std::endl;
-	}
-
-	stack.Push(3);
-	stack.Push(2);
-	stack.Push(12);
-
-	while (stack.Count()> 0)
-	{
-		std::cout << stack.Pop() << std::endl;
-	}
+	std::cout << "Factorial_Recursive : " << FactorialRecursive(6) << std::endl;
+	std::cout << "Factorial_None_Recursive : " << FactorialNonRecursive(6) << std::endl;
+	std::cout << "Fibonacci_Recursive : " << FibonacciRecursive(7) << std::endl;
+	std::cout << "Fibonacci_None_Recursive : " << FibonacciNoneRecursive(7) << std::endl;
 
 	return 0;
 }

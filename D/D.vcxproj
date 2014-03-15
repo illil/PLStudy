@@ -147,9 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="factorial.cpp" />
+    <ClCompile Include="fibonacci.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="factorial.h" />
+    <ClInclude Include="fibonacci.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />
   </ItemGroup>

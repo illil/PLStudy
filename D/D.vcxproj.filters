@@ -2,9 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="factorial.cpp" />
+    <ClCompile Include="fibonacci.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="String.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="factorial.h" />
+    <ClInclude Include="fibonacci.h" />
   </ItemGroup>
 </Project>
