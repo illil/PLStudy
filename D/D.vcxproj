@@ -150,10 +150,12 @@
     <ClCompile Include="factorial.cpp" />
     <ClCompile Include="fibonacci.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="hanoi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="factorial.h" />
     <ClInclude Include="fibonacci.h" />
+    <ClInclude Include="hanoi.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />
   </ItemGroup>

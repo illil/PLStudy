@@ -4,11 +4,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="factorial.cpp" />
     <ClCompile Include="fibonacci.cpp" />
+    <ClCompile Include="hanoi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="String.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="factorial.h" />
     <ClInclude Include="fibonacci.h" />
+    <ClInclude Include="hanoi.h" />
   </ItemGroup>
 </Project>
