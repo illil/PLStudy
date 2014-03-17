@@ -7,8 +7,8 @@
 
 int main()
 {
+	HanoiResursive(source, temp, dest, 4);
 	std::cout << "Tower of Hanoi" << std::endl;
-	Hanoi(source, temp, dest, 3);
-
+	HanoiNonResursive(source, temp, dest, 4);
 	return 0;
 }
