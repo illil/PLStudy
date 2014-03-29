@@ -5,6 +5,7 @@
     <ClCompile Include="factorial.cpp" />
     <ClCompile Include="fibonacci.cpp" />
     <ClCompile Include="hanoi.cpp" />
+    <ClCompile Include="figure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="String.h" />
@@ -12,5 +13,6 @@
     <ClInclude Include="factorial.h" />
     <ClInclude Include="fibonacci.h" />
     <ClInclude Include="hanoi.h" />
+    <ClInclude Include="figure.h" />
   </ItemGroup>
 </Project>

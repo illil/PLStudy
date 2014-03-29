@@ -1,6 +1,6 @@
 #pragma once
 
-class Stack
+template <typename T> class Stack
 {
 public:
 
@@ -20,38 +20,32 @@ public:
 	}
 
 
-	void Push(int data)
+	void Push(T data)
 	{
 		if (_data != nullptr)
 		{
 			if (_capacity < _count + 1)
 			{
 				_capacity *= 2;
-				int *oldData = _data;
-				_data = new int[_capacity];
-				memcpy(_data, oldData, _count * sizeof(int));
+				T *oldData = _data;
+				_data = new T[_capacity];
+				memcpy(_data, oldData, _count * sizeof(T));
 				delete oldData;
-				
+
 			}
 		}
-
-		/*else
-		{
-			_data = new int[_count + 1];
-		}
-		*/
 
 		_data[_count] = data;
 		_count ++;
 	}
 
-	int Pop()
+	T Pop()
 	{
 		_count = _count - 1;
 		return _data[_count];
 	}
 
-	bool TryPop(int& data)
+	bool TryPop(T& data)
 	{
 		if (_count > 0)
 		{	
@@ -61,12 +55,12 @@ public:
 		return false;
 	}
 
-	int Peek()
+	T Peek()
 	{
 		return _data[_count - 1];
 	}
 
-	bool TryPeek(int& data)
+	bool TryPeek(T& data)
 	{
 		if (_count > 0)
 		{
@@ -82,7 +76,7 @@ public:
 	}
 
 private:
-	int* _data;
+	T* _data;
 	int _count;
 	int _capacity;
 };

@@ -4,11 +4,18 @@
 #include "factorial.h"
 #include "fibonacci.h"
 #include "hanoi.h"
+#include "figure.h"
+#include <vector>
+
 
 int main()
 {
-	HanoiResursive(source, temp, dest, 4);
-	std::cout << "Tower of Hanoi" << std::endl;
-	HanoiNonResursive(source, temp, dest, 4);
+	Figure *a = new Rectangle(0, 0, 10, 10);
+	Figure *b = new Rectangle(0, 0, 10, 10);
+
+	float aa = a->GetArea();
+	float bb = b->GetArea();
+
+	delete a;
 	return 0;
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 #include "hanoi.h"
+#include "Stack.h"
+#include <stack>
 
 void HanoiResursive(Tower source, Tower temp, Tower dest, int i)
 {
@@ -17,21 +19,25 @@ void HanoiResursive(Tower source, Tower temp, Tower dest, int i)
 
 void HanoiNonResursive(Tower source, Tower temp, Tower dest, int i)
 {
-	HanoiData data;
-	HanoiStack stack;
-	stack.Push(HanoiData(source, temp, dest, i));
 
-	while (stack.TryPop(data))
+	std::stack<HanoiData> stack;
+
+	stack.push(HanoiData(source, temp, dest, i));
+
+	while (!stack.empty())
 	{
+		HanoiData data = stack.top();
+		stack.pop();
+
 		if (data.height == 1)
 		{
 			std::cout << data.source << " Move to " << data.dest << std::endl;
 		}
 		else if (data.height > 1)
 		{
-			stack.Push(HanoiData(data.temp, data.source, data.dest, data.height - 1));
-			stack.Push(HanoiData(data.source, data.temp, data.dest, 1));
-			stack.Push(HanoiData(data.source, data.dest, data.temp, data.height - 1));
+			stack.push(HanoiData(data.temp, data.source, data.dest, data.height - 1));
+			stack.push(HanoiData(data.source, data.temp, data.dest, 1));
+			stack.push(HanoiData(data.source, data.dest, data.temp, data.height - 1));
 		}
 	}
 }
