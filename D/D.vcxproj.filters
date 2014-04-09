@@ -15,5 +15,6 @@
     <ClInclude Include="hanoi.h" />
     <ClInclude Include="figure.h" />
     <ClInclude Include="Array.h" />
+    <ClInclude Include="MountainData.h" />
   </ItemGroup>
 </Project>

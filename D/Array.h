@@ -3,10 +3,10 @@ template <typename T> class Array
 {
 public:
 
-	Array(int size)
+	Array(int capacity = 16)
 	{
-		_count = size;
-		_capacity = size;
+		_count = 0;
+		_capacity = capacity;
 		_data = new int[_capacity];
 	}
 

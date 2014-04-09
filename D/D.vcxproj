@@ -159,6 +159,7 @@
     <ClInclude Include="factorial.h" />
     <ClInclude Include="fibonacci.h" />
     <ClInclude Include="hanoi.h" />
+    <ClInclude Include="MountainData.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />
   </ItemGroup>
