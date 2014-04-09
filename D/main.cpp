@@ -1,21 +1,19 @@
 #include <iostream>
-#include "String.h"
-#include "Stack.h"
-#include "factorial.h"
-#include "fibonacci.h"
-#include "hanoi.h"
-#include "figure.h"
-#include <vector>
+#include "Array.h"
 
 
 int main()
 {
-	Figure *a = new Rectangle(0, 0, 10, 10);
-	Figure *b = new Rectangle(0, 0, 10, 10);
+	int data1[10];
 
-	float aa = a->GetArea();
-	float bb = b->GetArea();
+	Array<int> data(10);
 
-	delete a;
+	data[0] = 1;
+	data.PushFront(0);
+	data.PushBack(11);
+	for (int i = 0; i < data.Count(); ++i)
+	{
+		std::cout << data[i] << std::endl;
+	}
 	return 0;
 }

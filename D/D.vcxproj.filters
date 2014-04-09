@@ -14,5 +14,6 @@
     <ClInclude Include="fibonacci.h" />
     <ClInclude Include="hanoi.h" />
     <ClInclude Include="figure.h" />
+    <ClInclude Include="Array.h" />
   </ItemGroup>
 </Project>
