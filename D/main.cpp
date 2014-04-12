@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "MountainData.h"
+#include "Sort.h"
 
 int main()
 {
@@ -22,18 +24,13 @@ int main()
 	mountains.push_back(MountainData("Annapurna", 8091));
 	mountains.push_back(MountainData("Cho Oyu", 8201));
 
-	for (int i = 1; i < mountains.size() - 1; i++)
-	{
-		for (int j = 0; j < mountains.size() - i; j++)
+
+	BubbleSort<MountainData>(mountains, 
+		[](MountainData & a, MountainData& b)
 		{
-			if (mountains[j]._elevation > mountains[j + 1]._elevation)
-			{
-				MountainData temp = mountains[j];
-				mountains[j] = mountains[j + 1];
-				mountains[j + 1] = temp;
-			}
+			return a._elevation > b._elevation; 
 		}
-	}
+	);
 
 	for (int i = mountains.size() -1 ; i >= 0; i--)
 	{

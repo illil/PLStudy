@@ -85,6 +85,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,6 +154,7 @@
     <ClCompile Include="fibonacci.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hanoi.cpp" />
+    <ClCompile Include="Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h" />
@@ -160,6 +163,7 @@
     <ClInclude Include="fibonacci.h" />
     <ClInclude Include="hanoi.h" />
     <ClInclude Include="MountainData.h" />
+    <ClInclude Include="Sort.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />
   </ItemGroup>

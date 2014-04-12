@@ -14,3 +14,12 @@ public:
 	std::string _name;
 	int _elevation;
 };
+
+struct MountainComparer
+{
+public:
+	bool operator ()(const MountainData &a, const MountainData &b)
+	{
+		return a._elevation > b._elevation;
+	}
+};
