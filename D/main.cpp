@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "MountainData.h"
 #include "Sort.h"
+#include "BinarySearch.h"
 
 int main()
 {
@@ -25,12 +26,22 @@ int main()
 	mountains.push_back(MountainData("Cho Oyu", 8201));
 
 
-	BubbleSort<MountainData>(mountains, 
+	InsertSort<MountainData>(mountains,
 		[](MountainData & a, MountainData& b)
 		{
 			return a._elevation > b._elevation; 
 		}
 	);
+
+	int index;
+	bool result = 	TryBinarySearch<MountainData,int>(mountains,  8047,
+		[](MountainData & a, int & b)
+		{
+			return b - a._elevation; 
+		},
+		index
+	);
+
 
 	for (int i = mountains.size() -1 ; i >= 0; i--)
 	{

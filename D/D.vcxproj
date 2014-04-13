@@ -154,10 +154,10 @@
     <ClCompile Include="fibonacci.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hanoi.cpp" />
-    <ClCompile Include="Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h" />
+    <ClInclude Include="BinarySearch.h" />
     <ClInclude Include="figure.h" />
     <ClInclude Include="factorial.h" />
     <ClInclude Include="fibonacci.h" />
