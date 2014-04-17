@@ -18,5 +18,6 @@
     <ClInclude Include="MountainData.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="BinarySearch.h" />
+    <ClInclude Include="Swap.h" />
   </ItemGroup>
 </Project>

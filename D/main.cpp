@@ -26,35 +26,22 @@ int main()
 	mountains.push_back(MountainData("Cho Oyu", 8201));
 
 
-	InsertSort<MountainData>(mountains,
+	QuickSort<MountainData>(mountains,
 		[](MountainData & a, MountainData& b)
 		{
-			return a._elevation > b._elevation; 
+			return  a._elevation < b._elevation;
 		}
 	);
 
-	int index;
-	bool result = 	TryBinarySearch<MountainData,int>(mountains,  8047,
+	/*int index;
+	bool result = TryBinarySearch<MountainData, int>(sortedMountain, 8047,
 		[](MountainData & a, int & b)
 		{
 			return b - a._elevation; 
 		},
 		index
 	);
-
-
-	for (int i = mountains.size() -1 ; i >= 0; i--)
-	{
-		if (mountains[i]._elevation > 8500)
-		{
-			std::cout << "Name: " << mountains[i]._name << ", Elevation: " << mountains[i]._elevation << std::endl;
-		}
-		else
-		{
-			break;
-		}
-	}
-
+	*/
 
 	return 0;
 }

@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D", "D\D.vcxproj", "{9B0523
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.NET", "D.NET\D.NET.csproj", "{C9739342-DF9A-4E64-8B0A-2059EB958435}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "D.Fsharp", "D.Fsharp\D.Fsharp.fsproj", "{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,18 @@ Global
 		{C9739342-DF9A-4E64-8B0A-2059EB958435}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C9739342-DF9A-4E64-8B0A-2059EB958435}.Release|Win32.ActiveCfg = Release|Any CPU
 		{C9739342-DF9A-4E64-8B0A-2059EB958435}.Release|x64.ActiveCfg = Release|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Release|Win32.ActiveCfg = Release|Any CPU
+		{4B097203-87A8-44C6-8C5D-D0E6DCCB1D74}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
