@@ -5,8 +5,23 @@
 #include "Sort.h"
 #include "BinarySearch.h"
 
+
+std::function<void()> Test()
+{
+	int i=10;
+	return[&]()
+	{
+		i = 11;
+	};
+}
+
 int main()
 {
+	auto a = Test();
+
+	a();
+	/*
+
 	
 	std::vector<MountainData> mountains;
 

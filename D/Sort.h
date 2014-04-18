@@ -131,5 +131,4 @@ template <typename T> void QuickSort(std::vector<T>& datas, std::function<bool(T
 template <typename T> void QuickSort(std::vector<T>& datas, std::function<bool(T&, T&)> less)
 {
 	QuickSort<T>(datas, less, 0, datas.size() - 1);
-	
 }

@@ -10,6 +10,9 @@ namespace D.NET
     {
         static void Main(string[] args)
         {
+            Func<int, int> fun = (int i)=>{return 1;};
+
+            var aa = 1;
             List <MountainData> mountains = new List<MountainData>();
 
 
