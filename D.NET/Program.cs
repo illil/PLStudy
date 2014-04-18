@@ -8,11 +8,18 @@ namespace D.NET
 {
     class Program
     {
+        static Action Test()
+        {
+            int i = 10;
+            return () =>
+            {
+                i = 11;
+            };
+        }
         static void Main(string[] args)
         {
-            Func<int, int> fun = (int i)=>{return 1;};
-
-            var aa = 1;
+            var fun = Test();
+            fun();
             List <MountainData> mountains = new List<MountainData>();
 
 

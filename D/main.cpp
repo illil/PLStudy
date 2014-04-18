@@ -5,6 +5,10 @@
 #include "Sort.h"
 #include "BinarySearch.h"
 
+int Add(int a, int b)
+{	
+	return a + b;
+}
 
 std::function<void()> Test()
 {
@@ -15,11 +19,13 @@ std::function<void()> Test()
 	};
 }
 
+
 int main()
 {
 	auto a = Test();
 
 	a();
+
 	/*
 
 	
