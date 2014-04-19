@@ -7,70 +7,43 @@ public:
 	{
 		_count = 0;
 		_capacity = capacity;
-		_data = new int[_capacity];
+		_data = static_cast<T>(operator new[](sizeof(T)* _capacity));
+		memset(_data, 0, sizeof(T)* _capacity);
 	}
 
 	~Array()
 	{
-		if (_data != nullptr)
-		{
-			delete _data;
-		}
+		delete _data;
 	}
+
 
 	T & operator [](int index)
 	{
 		return _data[index];
 	}
 
-	void PushBack(T data)
+	void PushBack(T& data)
 	{
-		if (_data != nullptr)
-		{
-			if (_capacity < _count + 1)
-			{
-				_capacity *= 2;
-				T *oldData = _data;
-				_data = new T[_capacity];
-				memcpy(_data, oldData, _count * sizeof(T));
-				delete oldData;
-
-			}
-		}
-
-		_data[_count] = data;
-		_count++;
+		Insert(_count, data);
 	}
 
-	void PushFront(T data)
+	void PushFront(T& data)
 	{
-		if (_capacity < _count + 1)
-		{
-			_capacity *= 2;
-			T *oldData = _data;
-			_data = new T[_capacity];
-			memcpy(_data + 1, oldData, _count * sizeof(T));
-			delete oldData;
-		}
-		else
-		{
-			memcpy(_data + 1, _data, _count * sizeof(T));
-		}
-		_data[0] = data;
-		_count++;
+		Insert(0, data);
 	}
 
 	T PopFront()
 	{
 		T result = _data[0];
-		_count--;
-		memcpy(_data, _data +1, _count * sizeof(T));
+		RemoveAt(0);
+		return result;
 	}
 
 	T PopBack()
 	{
-		_count--;
-		return _data[_count];
+		T result = _data[_count -1];
+		RemoveAt(_count -1);
+		return result;
 	}
 	
 	int Count()
@@ -78,7 +51,59 @@ public:
 		return _count;
 	}
 
+	bool Insert(int index, T& data)
+	{
+		if (index > _count || index < 0 )
+		{
+			return false;
+		}
+
+		if (_capacity < _count + 1)
+		{
+			_capacity *= 2;
+			T *oldData = _data;
+
+			_data = static_cast<T>(operator new[](sizeof(T)* _capacity));
+			memset(_data, 0, sizeof(T)* _capacity);
+
+			if (index > 0)
+				memcpy(_data, oldData, index * sizeof(T));
+
+			if (_count - index > 0)
+				memcpy(_data + index + 1, oldData + index, (_count - index) *sizeof(T));
+
+			delete oldData;
+		}
+		else
+		{
+			if (_count - index > 0)
+				memcpy(_data + index + 1, _data + index, (_count - index) *sizeof(T));
+		}
+		_data[index] = data;
+		_count++;
+		return true;
+	}
+
+	bool RemoveAt(int index)
+	{
+		if (index > _count -1 || index < 0)
+		{
+			return false;
+		}
+
+		if (_count > 1)
+		{
+			memcpy(_data + index, _data + index + 1, (_count - index) *sizeof(T));
+		}
+
+		memset(_data + _count - 1, 0, sizeof(T));
+		--_count;
+		return true;
+	}
+
 private:
+
+
 	T* _data;
 	int _count;
 	int _capacity;

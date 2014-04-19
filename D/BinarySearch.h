@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 
-
 template <typename T, typename T2> bool TryBinarySearch(std::vector<T>& datas, T2 t, std::function<int(T&, T2&)> comparer, int& index)
 {
 	int start = 0;
