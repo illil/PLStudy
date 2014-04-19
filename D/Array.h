@@ -101,6 +101,29 @@ public:
 		return true;
 	}
 
+
+	void ShrinkToFit()
+	{
+		Reserve(_count);
+	}
+
+	bool Reserve(int capacity)
+	{
+		if (capacity < _count)
+			return false;
+
+		_capacity = capacity;
+		T *oldData = _data;
+		_data = static_cast<T>(operator new[](sizeof(T)* _capacity));		
+		memcpy(_data, oldData, _count *sizeof(T));
+
+		if (_capacity - _count > 0)
+			memset(_data + _count, 0, (_capacity - _count) * sizeof(T));
+		delete oldData;
+
+		return true;
+	}
+
 private:
 
 
