@@ -7,8 +7,7 @@ public:
 	{
 		_count = 0;
 		_capacity = capacity;
-		_data = static_cast<T>(operator new[](sizeof(T)* _capacity));
-		memset(_data, 0, sizeof(T)* _capacity);
+		_data = static_cast<T*>(operator new[](sizeof(T)* _capacity));
 	}
 
 	~Array()
@@ -63,8 +62,7 @@ public:
 			_capacity *= 2;
 			T *oldData = _data;
 
-			_data = static_cast<T>(operator new[](sizeof(T)* _capacity));
-			memset(_data, 0, sizeof(T)* _capacity);
+			_data = static_cast<T*>(operator new[](sizeof(T)* _capacity));
 
 			if (index > 0)
 				memcpy(_data, oldData, index * sizeof(T));
@@ -79,7 +77,9 @@ public:
 			if (_count - index > 0)
 				memcpy(_data + index + 1, _data + index, (_count - index) *sizeof(T));
 		}
-		_data[index] = data;
+
+		new (&_data[index]) T(data);
+
 		_count++;
 		return true;
 	}
@@ -91,12 +91,13 @@ public:
 			return false;
 		}
 
+		_data[index].~T();
+
 		if (_count > 1)
 		{
 			memcpy(_data + index, _data + index + 1, (_count - index) *sizeof(T));
 		}
 
-		memset(_data + _count - 1, 0, sizeof(T));
 		--_count;
 		return true;
 	}

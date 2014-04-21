@@ -12,7 +12,7 @@ public:
 	}
 
 	std::string _name;
-	int _elevation;
+	int _elevation;	
 };
 
 struct MountainComparer

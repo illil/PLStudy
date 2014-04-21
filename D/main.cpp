@@ -28,8 +28,7 @@ int main()
 	mountains.PushBack(MountainData("Broad Peak", 8047));
 	mountains.PushBack(MountainData("Annapurna", 8091));
 	mountains.PushBack(MountainData("Cho Oyu", 8201));
-
-
+	
 	mountains.RemoveAt(1);
 
 	return 0;
