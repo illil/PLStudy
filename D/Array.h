@@ -12,6 +12,10 @@ public:
 
 	~Array()
 	{
+		for (int i = 0; i < count; ++i)
+		{
+			_data[i].~T();
+		}
 		delete _data;
 	}
 

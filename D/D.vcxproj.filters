@@ -19,5 +19,6 @@
     <ClInclude Include="Sort.h" />
     <ClInclude Include="BinarySearch.h" />
     <ClInclude Include="Swap.h" />
+    <ClInclude Include="LinkedList.h" />
   </ItemGroup>
 </Project>

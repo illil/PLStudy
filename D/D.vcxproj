@@ -162,6 +162,7 @@
     <ClInclude Include="factorial.h" />
     <ClInclude Include="fibonacci.h" />
     <ClInclude Include="hanoi.h" />
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MountainData.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="Stack.h" />
