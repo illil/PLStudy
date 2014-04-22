@@ -4,7 +4,7 @@ template <typename T> class LinkedList
 {
 public:
 	LinkedList() 
-		:_begin(nullptr), _end(nullptr)
+		:_begin(nullptr), _end(nullptr), _count(0)
 	{
 
 	}
@@ -16,80 +16,27 @@ public:
 
 	void AddFirst(T &data)
 	{
-		if (_begin == nullptr)
-		{
-			_begin = new Node(data);
-			_end = _begin;
-		}
-		else
-		{
-			Node * oldBegin = _begin;
-			_begin = new Node(data);
-			_begin->_next = oldBegin;
-			oldBegin->_prev = _begin;
-		}
-
+		AddBefore(_begin, data);
 	}
 
 	void AddLast(T &data)
 	{
-		if (_begin == nullptr)
-		{
-			_begin = new Node(data);
-			_end = _begin;
-		}
-		else
-		{
-			Node * oldEnd = _end;
-			_end = new Node(data);
-			_end->_prev = oldEnd;
-			oldEnd->_next = _end;
-		}
+		AddAfter(_end, data);
 	}
 
 	bool RemoveFirst()
 	{
 		if (_begin == nullptr)
-			return false;
-
-		Node * next = _begin->_next;
-
-		delete _begin;
-
-		_begin = next;
-
-		if (_begin != nullptr)
-		{
-			_begin->_prev = nullptr;
-		}
-		else
-		{
-			_end = nullptr;
-		}
-
+			return false;		
+		Remove(_begin);
 		return true;
-
 	}
 
 	bool RemoveLast()
 	{
 		if (_begin == nullptr)
 			return false;
-
-		auto oldEnd = _end;
-		_end = _end->_prev;
-		
-		delete oldEnd;
-
-		if (_end == nullptr)
-		{
-			_begin = nullptr;
-		}
-		else
-		{
-			_end->_next = nullptr;
-		}
-		
+		Remove(_end);
 		return true;
 	}
 
@@ -107,18 +54,7 @@ public:
 	}
 
 
-	class Node
-	{
-	public:
-		Node(T & data)
-			:_data(data), _next(nullptr), _prev(nullptr)
-		{			
-		}
-
-		T _data;
-		Node * _next;
-		Node * _prev;
-	};
+	class Node;
 
 	class Iterator
 	{
@@ -155,6 +91,8 @@ public:
 			return _node != a._node;
 		}
 
+
+		friend LinkedList;
 	private:
 		Node * _node;
 	};
@@ -162,14 +100,14 @@ public:
 	Iterator Begin()
 	{
 		return Iterator(_begin);
-	}
+	}	
 
 	Iterator End()
 	{
 		return Iterator(nullptr);
 	}
 
-	Iterator Find(T& data)
+	Iterator FindFirst(T& data)
 	{
 		for (auto i = Begin(); i != End(); ++i)
 		{
@@ -182,20 +120,154 @@ public:
 		return End();
 	}
 
-	Iterator AddAfter(Iterator position, T &data)
+	Iterator FindFirst(std::function<bool(T&)> predict)
 	{
-
+		for (auto i = Begin(); i != End(); ++i)
+		{
+			if (predict(*i))
+			{
+				return i;
+			}
+		}
+		return End();
 	}
 
-	Iterator AddBefore(Iterator position, T &data)
+	
+	Iterator AddAfter(Iterator &iter, T &data)
 	{
+		CheckIter(iter);
+		return Iterator(AddAfter(iter._node, data));
+	}
 
+	Iterator AddBefore(Iterator &iter, T &data)
+	{
+		CheckIter(iter);
+		return Iterator(AddBefore(iter._node, data));
+	}
+
+	Iterator Remove(Iterator &iter)
+	{
+		CheckIter(iter);
+		return Iterator(Remove(iter._node));
+	}
+
+
+	int Count()
+	{
+		return _count;
 	}
 
 private:
+
+	void CheckIter(Iterator &iter)
+	{
+		if (iter._node->_list != this)
+		{
+			throw new std::exception("±è´öÀÏ °°´Ù");
+		}
+	}
+
+	Node* AddBefore(Node * node, T&data)
+	{
+		auto newNode = new Node(this,data);
+
+		if (node == nullptr)
+		{
+			_begin = _end = newNode;
+		}
+		else
+		{
+			Link(node->_prev, newNode);
+			Link(newNode, node);
+
+			if (node == _begin)
+				_begin = newNode;
+		}
+		++_count;
+		return newNode;
+	}
+
+	Node* AddAfter(Node * node, T&data)
+	{
+		auto newNode = new Node(this,data);
+
+		if (node == nullptr)
+		{
+			_begin = _end = newNode;
+		}
+		else
+		{
+			auto next = node->_next;
+			Link(node, newNode);
+			Link(newNode, next);
+
+			if (node == _end)
+				_end = newNode;
+		}
+
+		++_count;
+		return newNode;
+	}
+
+	void Link(Node *prev, Node *next)
+	{		
+		if (prev != nullptr)
+		{
+			prev->_next = next;
+		}
+		if (next != nullptr)
+		{
+			next->_prev = prev;
+		}
+	}
+
+	Node* Remove(Node *node)
+	{
+		if (_begin == nullptr)
+			return nullptr;
+
+		auto next = node->_next;
+
+		if (node->_prev == nullptr)
+		{
+			_begin = node->_next;
+		}
+		else
+		{
+			node->_prev->_next = node->_next;
+		}
+
+		if (node->_next == nullptr)
+		{
+			_end = node->_prev;
+		}
+		else
+		{
+			node->_next->_prev = node->_prev;
+		}
+
+		delete node;
+		--_count;
+		return next;
+	}
+
+	class Node
+	{
+	public:
+		Node(LinkedList * list, T & data)
+			:_list(list),_data(data), _next(nullptr), _prev(nullptr)
+		{
+		}
+
+		LinkedList* _list;
+		T _data;
+		Node * _next;
+		Node * _prev;
+	};
+
 	Node * _begin;
 	Node * _end;
-
+	int _count;
 
 	
 };

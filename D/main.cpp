@@ -9,12 +9,13 @@
 
 
 int main()
-{
-
-
+{	
 	LinkedList <MountainData> mountains;
 
 	mountains.AddLast(MountainData("Dhaulagiri", 8167));
+
+	mountains.RemoveLast();
+
 	mountains.AddLast(MountainData("Manaslu", 8163));
 	mountains.AddLast(MountainData("Nanga Parbat", 8125));
 	mountains.AddLast(MountainData("Gasherbrum II", 8035));
@@ -29,13 +30,24 @@ int main()
 	mountains.AddLast(MountainData("Annapurna", 8091));
 	mountains.AddLast(MountainData("Cho Oyu", 8201));
 	
-	mountains.RemoveFirst();
-	mountains.RemoveLast();
+	
+	LinkedList <MountainData> aaa;
+	mountains.Remove(aaa.Begin());
 
+	auto find = mountains.FindFirst([](MountainData& m){return m._name == "Annapurna"; });
 
-	for (auto i = mountains.Begin(); i != mountains.End(); i++)
+	for (auto i = mountains.Begin(); i != mountains.End();)
 	{
-		std::cout << (*i)._name << " " << (*i)._elevation << std::endl;
+		std::cout << (*i)._name << std::endl;
+		if ((*i)._name == "K2")
+		{
+			i = mountains.Remove(i);
+		}
+		else
+		{
+			++i;
+		}
 	}
+	
 	return 0;
 }
