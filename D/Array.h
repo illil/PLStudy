@@ -1,4 +1,12 @@
 
+template <typename T>
+class IteratorBase
+{
+public:
+	
+};
+
+
 template <typename T> class Array
 {
 public:
@@ -12,7 +20,7 @@ public:
 
 	~Array()
 	{
-		for (int i = 0; i < count; ++i)
+		for (int i = 0; i < _count; ++i)
 		{
 			_data[i].~T();
 		}
@@ -127,6 +135,72 @@ public:
 		delete oldData;
 
 		return true;
+	}
+
+	class Iterator :public IteratorBase<T>
+	{
+	public:
+		Iterator(Array* arrayData, int index)
+			:_array(arrayData), _index(index)
+		{
+		}
+
+		T &operator *()
+		{
+			return (*_array)[_index];
+		}
+
+		Iterator& operator ++()
+		{
+			++_index;
+			return *this;
+		}
+
+		Iterator& operator --()
+		{
+			--_index;
+			return *this;
+		}
+
+
+		Iterator operator +(int i)
+		{
+			return Iterator(_array, _index + i);
+		}
+
+		Iterator operator -(int i)
+		{
+			return Iterator(_array, _index - i);
+		}
+
+		bool operator ==(Iterator & a)
+		{
+			return _array == a._array && _index == a._index;
+		}
+
+		bool operator !=(Iterator & a)
+		{
+			return _array != a._array || _index != a._index;
+		}
+
+		bool operator >=(Iterator & a)
+		{
+			return _array == a._array && _index >= a._index;
+		}
+
+	private:
+		Array* _array;
+		int _index;
+	};
+
+	Iterator Begin()
+	{
+		return Iterator(this, 0);
+	}
+
+	Iterator End()
+	{
+		return Iterator(this, _count);
 	}
 
 private:

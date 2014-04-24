@@ -44,19 +44,20 @@ template <typename T> void SelectionSort(std::vector<T>& datas, std::function<bo
 	}
 }
 
-template <typename T> void InsertSort(std::vector<T>& datas, std::function<bool(T&, T&)> less)
-{
-	for (int i = 1; i < datas.size(); i++)
-	{
-		T insertData = datas[i];
 
-		int j = i - 1;
-		while (j >= 0 && less(datas[j], insertData))
+template <typename Iterator,typename Less> void InsertSort(Iterator begin, Iterator end,Less less)
+{
+	for (auto i = begin +1; i != end; i++)
+	{
+		auto insertData = *i;
+
+		auto j = i ;
+		while (j != begin && less(*(j-1), insertData))
 		{
-			datas[j + 1] = datas[j];
+			*j = *(j-1);
 			j--;
 		}
-		datas[j + 1] = insertData;
+		*(j) = insertData;
 	}
 }
 

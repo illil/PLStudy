@@ -14,12 +14,12 @@ public:
 		Clear();
 	}
 
-	void AddFirst(T &data)
+	void PushBack(T &data)
 	{
 		AddBefore(_begin, data);
 	}
 
-	void AddLast(T &data)
+	void PushFront(T &data)
 	{
 		AddAfter(_end, data);
 	}
@@ -79,6 +79,28 @@ public:
 		{
 			_node = _node->_prev;
 			return *this;
+		}
+
+		Iterator operator +(int i)
+		{
+			auto node = _node;
+			while (i-- && node)
+			{
+				node = node->_next;
+			}
+
+			return Iterator( node);
+		}
+
+		Iterator operator -(int i)
+		{
+			auto node = _node;
+			while (i-- && node)
+			{
+				node = node->_prev;
+			}
+
+			return Iterator( node);
 		}
 
 		bool operator ==(Iterator & a)
