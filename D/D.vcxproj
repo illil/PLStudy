@@ -164,6 +164,7 @@
     <ClInclude Include="hanoi.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MountainData.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />

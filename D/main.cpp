@@ -1,16 +1,17 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+
 #include "MountainData.h"
 #include "Sort.h"
 #include "BinarySearch.h"
 #include "Array.h"
 #include "LinkedList.h"
-
+#include "Queue.h"
 
 int main()
-{	
-	LinkedList <MountainData> mountains;
+{
+	Array <MountainData> mountains;
 
 	mountains.PushBack(MountainData("Dhaulagiri", 8167));
 	mountains.PushBack(MountainData("Manaslu", 8163));
@@ -27,7 +28,24 @@ int main()
 	mountains.PushBack(MountainData("Annapurna", 8091));
 	mountains.PushBack(MountainData("Cho Oyu", 8201));
 	
+	InsertSort(mountains.Begin(), mountains.End(), 
+		[](MountainData& a, MountainData& b){return a._elevation > b._elevation; });
+
+
+	Queue<MountainData> queue;
+	queue.Enqueue(MountainData("Dhaulagiri", 8167));
 	
-	InsertSort(mountains.Begin(), mountains.End(), [](MountainData& a, MountainData& b){return a._elevation > b._elevation; });
+	try
+	{
+		MountainData data = queue.Dequeue();
+		queue.Dequeue();
+	}
+	catch (std::exception ex)
+	{
+		std::cout << "";
+	}
+	
+	
+	int c = queue.Count();
 	return 0;
 }

@@ -24,20 +24,23 @@ public:
 		AddAfter(_end, data);
 	}
 
-	bool RemoveFirst()
+	T PopFront()
 	{
 		if (_begin == nullptr)
-			return false;		
+			throw std::exception("");
+
+		T t = _begin->_data;
 		Remove(_begin);
-		return true;
+		return t;
 	}
 
-	bool RemoveLast()
+	T PopBack()
 	{
 		if (_begin == nullptr)
-			return false;
+			throw  std::exception("");
+		T t = _end->_data;
 		Remove(_end);
-		return true;
+		return t;
 	}
 
 	void Clear()
@@ -185,7 +188,7 @@ private:
 	{
 		if (iter._node->_list != this)
 		{
-			throw new std::exception("±è´öÀÏ °°´Ù");
+			throw  std::exception("±è´öÀÏ °°´Ù");
 		}
 	}
 

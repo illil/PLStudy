@@ -1,22 +1,19 @@
-
-template <typename T>
-class IteratorBase
-{
-public:
-	
-};
+#include "String.h"
 
 
 template <typename T> class Array
 {
 public:
 
+
 	Array(int capacity = 16)
+		:_count(0), _capacity(capacity), test("test")
 	{
-		_count = 0;
-		_capacity = capacity;
-		_data = static_cast<T*>(operator new[](sizeof(T)* _capacity));
+		_data = static_cast<T*>(operator new [](sizeof(T)* _capacity));
+
 	}
+
+	String test;
 
 	~Array()
 	{
@@ -137,7 +134,7 @@ public:
 		return true;
 	}
 
-	class Iterator :public IteratorBase<T>
+	class Iterator 
 	{
 	public:
 		Iterator(Array* arrayData, int index)

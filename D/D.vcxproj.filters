@@ -20,5 +20,6 @@
     <ClInclude Include="BinarySearch.h" />
     <ClInclude Include="Swap.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Queue.h" />
   </ItemGroup>
 </Project>

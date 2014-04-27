@@ -5,6 +5,11 @@ struct MountainData
 {
 public:
 	
+	MountainData()
+	{
+
+	}
+
 	MountainData(std::string name, int elevation)
 		:_name(name), _elevation(elevation)
 	{		
