@@ -14,12 +14,12 @@
     <ClInclude Include="fibonacci.h" />
     <ClInclude Include="hanoi.h" />
     <ClInclude Include="figure.h" />
-    <ClInclude Include="Array.h" />
     <ClInclude Include="MountainData.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="BinarySearch.h" />
     <ClInclude Include="Swap.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Queue.h" />
+    <ClInclude Include="Vector.h" />
   </ItemGroup>
 </Project>

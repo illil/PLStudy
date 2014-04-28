@@ -5,47 +5,38 @@
 #include "MountainData.h"
 #include "Sort.h"
 #include "BinarySearch.h"
-#include "Array.h"
+#include "Vector.h"
 #include "LinkedList.h"
 #include "Queue.h"
 
 int main()
 {
-	Array <MountainData> mountains;
+	std::vector<int> aa;
+	SegmentQueue <MountainData> mountains;
 
-	mountains.PushBack(MountainData("Dhaulagiri", 8167));
-	mountains.PushBack(MountainData("Manaslu", 8163));
-	mountains.PushBack(MountainData("Nanga Parbat", 8125));
-	mountains.PushBack(MountainData("Gasherbrum II", 8035));
-	mountains.PushBack(MountainData("Shishapangma", 8012));
-	mountains.PushBack(MountainData("K2", 8611));
-	mountains.PushBack(MountainData("Kangchenjunga", 8586));
-	mountains.PushBack(MountainData("Lhotse", 8516));
-	mountains.PushBack(MountainData("Makalu", 8463));
-	mountains.PushBack(MountainData("Everest", 8848));
-	mountains.PushBack(MountainData("Gasherbrum I", 8068));
-	mountains.PushBack(MountainData("Broad Peak", 8047));
-	mountains.PushBack(MountainData("Annapurna", 8091));
-	mountains.PushBack(MountainData("Cho Oyu", 8201));
+	mountains.Enqueue(MountainData("Dhaulagiri", 8167));
+	mountains.Enqueue(MountainData("Manaslu", 8163));
+	mountains.Enqueue(MountainData("Nanga Parbat", 8125));
+	mountains.Enqueue(MountainData("Gasherbrum II", 8035));
+	mountains.Enqueue(MountainData("Shishapangma", 8012));
+	mountains.Enqueue(MountainData("K2", 8611));
+	mountains.Enqueue(MountainData("Kangchenjunga", 8586));
+	mountains.Enqueue(MountainData("Lhotse", 8516));
+	mountains.Enqueue(MountainData("Makalu", 8463));
+	mountains.Enqueue(MountainData("Everest", 8848));
+	mountains.Enqueue(MountainData("Gasherbrum I", 8068));
+	mountains.Enqueue(MountainData("Broad Peak", 8047));
+	mountains.Enqueue(MountainData("Annapurna", 8091));
+	mountains.Enqueue(MountainData("Cho Oyu", 8201));
 	
-	InsertSort(mountains.Begin(), mountains.End(), 
-		[](MountainData& a, MountainData& b){return a._elevation > b._elevation; });
-
-
-	Queue<MountainData> queue;
-	queue.Enqueue(MountainData("Dhaulagiri", 8167));
 	
-	try
+	
+
+	while (mountains.Count() > 0)
 	{
-		MountainData data = queue.Dequeue();
-		queue.Dequeue();
+		MountainData data = mountains.Dequeue();
+		std::cout << data._name << " " << data._elevation << std::endl;
 	}
-	catch (std::exception ex)
-	{
-		std::cout << "";
-	}
-	
-	
-	int c = queue.Count();
+
 	return 0;
 }

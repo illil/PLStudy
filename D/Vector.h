@@ -1,12 +1,12 @@
 #include "String.h"
 
 
-template <typename T> class Array
+template <typename T> class Vector
 {
 public:
 
 
-	Array(int capacity = 16)
+	Vector(int capacity = 16)
 		:_count(0), _capacity(capacity), test("test")
 	{
 		_data = static_cast<T*>(operator new [](sizeof(T)* _capacity));
@@ -15,11 +15,11 @@ public:
 
 	String test;
 
-	~Array()
+	~Vector()
 	{
-		for (int i = 0; i < _count; ++i)
+		for (auto i : *this)
 		{
-			_data[i].~T();
+			i.~T();
 		}
 		delete _data;
 	}
@@ -137,7 +137,7 @@ public:
 	class Iterator 
 	{
 	public:
-		Iterator(Array* arrayData, int index)
+		Iterator(Vector* arrayData, int index)
 			:_array(arrayData), _index(index)
 		{
 		}
@@ -186,16 +186,16 @@ public:
 		}
 
 	private:
-		Array* _array;
+		Vector* _array;
 		int _index;
 	};
 
-	Iterator Begin()
+	Iterator begin()
 	{
 		return Iterator(this, 0);
 	}
 
-	Iterator End()
+	Iterator end()
 	{
 		return Iterator(this, _count);
 	}

@@ -14,14 +14,14 @@ public:
 		Clear();
 	}
 
-	void PushBack(T &data)
-	{
-		AddBefore(_begin, data);
+	void PushBack(const  T &data)
+	{		
+		AddAfter(_end, data);
 	}
 
-	void PushFront(T &data)
-	{
-		AddAfter(_end, data);
+	void PushFront(const T &data)
+	{		
+		AddBefore(_begin, data);
 	}
 
 	T PopFront()
@@ -41,6 +41,20 @@ public:
 		T t = _end->_data;
 		Remove(_end);
 		return t;
+	}
+
+	T Front()
+	{
+		if (_begin == nullptr)
+			throw  std::exception("");
+		return _begin->_data;
+	}
+
+	T Back()
+	{
+		if (_begin == nullptr)
+			throw  std::exception("");
+		return _end->_data;
 	}
 
 	void Clear()
@@ -158,13 +172,13 @@ public:
 	}
 
 	
-	Iterator AddAfter(Iterator &iter, T &data)
+	Iterator AddAfter(Iterator &iter, const T &data)
 	{
 		CheckIter(iter);
 		return Iterator(AddAfter(iter._node, data));
 	}
 
-	Iterator AddBefore(Iterator &iter, T &data)
+	Iterator AddBefore(Iterator &iter, const T &data)
 	{
 		CheckIter(iter);
 		return Iterator(AddBefore(iter._node, data));
@@ -192,9 +206,9 @@ private:
 		}
 	}
 
-	Node* AddBefore(Node * node, T&data)
+	Node* AddBefore(Node * node, const T&data)
 	{
-		auto newNode = new Node(this,data);
+		Node* newNode = new Node(this,data);
 
 		if (node == nullptr)
 		{
@@ -212,7 +226,7 @@ private:
 		return newNode;
 	}
 
-	Node* AddAfter(Node * node, T&data)
+	Node* AddAfter(Node * node, const T&data)
 	{
 		auto newNode = new Node(this,data);
 
@@ -279,7 +293,7 @@ private:
 	class Node
 	{
 	public:
-		Node(LinkedList * list, T & data)
+		Node(LinkedList * list, const T & data)
 			:_list(list),_data(data), _next(nullptr), _prev(nullptr)
 		{
 		}

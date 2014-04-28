@@ -1,7 +1,7 @@
 #pragma once
-#include "Array.h"
+#include "Vector.h"
 
-template <typename T, typename Container = Array<T>> 
+template <typename T, typename Container = Vector<T>> 
 class Stack
 {
 public:
