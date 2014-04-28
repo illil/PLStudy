@@ -104,12 +104,20 @@ public:
 
 	virtual void Enqueue(T &data)
 	{
-		auto segment = _segmentList.Back();
+		Segment* segment = _segmentList.Back();
 
 		if (!segment->IsPushable())
 		{
-			_segmentList.PushBack(new Segment(_segmentCapacity));
-			segment = _segmentList.Back();
+			if (_segmentPool.Count() > 0)
+			{
+				segment = _segmentPool.PopBack();
+			}
+			else
+			{
+				segment = new Segment(_segmentCapacity);
+			}
+
+			_segmentList.PushBack(segment);
 		}
 
 		segment->PushBack(data);
@@ -118,10 +126,12 @@ public:
 
 	virtual T Dequeue()
 	{
-		auto segment = _segmentList.Front();
+		Segment * segment = _segmentList.Front();
 
 		if (!segment->IsPushable() && segment->Count() == 0)
 		{
+			segment->Reset();
+			_segmentPool.PushBack(segment);
 			_segmentList.PopFront();
 			segment = _segmentList.Front();
 		}
@@ -155,6 +165,15 @@ private:
 				_data[i].~T();
 			}
 			delete _data;
+		}
+
+		void Reset()
+		{
+			if (Count() >0)
+				throw std::exception("error");
+
+			_beginIndex = 0;
+			_endIndex = 0;
 		}
 
 		void PushBack(T &data)
@@ -197,5 +216,6 @@ private:
 
 	int _segmentCapacity;
 	LinkedList<Segment*> _segmentList;
+	Vector<Segment*> _segmentPool;
 	int _count;
 };

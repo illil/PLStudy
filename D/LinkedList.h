@@ -43,14 +43,14 @@ public:
 		return t;
 	}
 
-	T Front()
+	T& Front()
 	{
 		if (_begin == nullptr)
 			throw  std::exception("");
 		return _begin->_data;
 	}
 
-	T Back()
+	T& Back()
 	{
 		if (_begin == nullptr)
 			throw  std::exception("");
