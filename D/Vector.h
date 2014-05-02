@@ -7,13 +7,31 @@ public:
 
 
 	Vector(int capacity = 16)
-		:_count(0), _capacity(capacity), test("test")
+		:_count(0), _capacity(capacity)
 	{
-		_data = static_cast<T*>(operator new [](sizeof(T)* _capacity));
+		_data = static_cast<T*>(operator new[](sizeof(T)* _capacity));
 
 	}
 
-	String test;
+	Vector(Vector & vector)
+		:_count(vector._count), _capacity(vector._capacity)
+	{
+		_data = static_cast<T*>(operator new[](sizeof(T)* _capacity));
+
+		for (int i = 0; i < _count; ++i)
+		{
+			new (&_data[i]) T(vector._data[i]);
+		}
+	}
+
+
+	Vector(Vector && vector)
+		:_count(vector._count), _capacity(vector._capacity)
+	{
+		_data = vector._data; 
+		vector._data = nullptr;
+	}
+
 
 	~Vector()
 	{
@@ -30,12 +48,12 @@ public:
 		return _data[index];
 	}
 
-	void PushBack(T& data)
+	void PushBack(const T& data)
 	{
 		Insert(_count, data);
 	}
 
-	void PushFront(T& data)
+	void PushFront(const T& data)
 	{
 		Insert(0, data);
 	}
@@ -59,7 +77,7 @@ public:
 		return _count;
 	}
 
-	bool Insert(int index, T& data)
+	bool Insert(int index, const T& data)
 	{
 		if (index > _count || index < 0 )
 		{

@@ -21,5 +21,6 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="BinaryTree.h" />
   </ItemGroup>
 </Project>
