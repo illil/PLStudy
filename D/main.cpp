@@ -14,8 +14,8 @@
 int main()
 {
 	
-	BinaryTree<int> btree;
-
+	AVLTree<int> btree;
+	/*
 	btree.Add(10);
 	btree.Add(9);
 	btree.Add(8);
@@ -25,9 +25,30 @@ int main()
 	btree.Add(4);
 	btree.Add(3);
 	btree.Add(2);
-	btree.Add(1);
+	btree.Add(1);*/
 
-	bool exist = btree.IsExist(1);
+
+	/*
+	btree.Add(1);
+	btree.Add(2);
+	btree.Add(3);
+	btree.Add(4);
+	btree.Add(5);
+	btree.Add(6);
+	btree.Add(7);
+	btree.Add(8);
+	btree.Add(9);
+	btree.Add(10);*/
+
+
+	btree.Add(5);
+	btree.Add(2);
+	btree.Add(6);
+	btree.Add(1);
+	btree.Add(3);
+	btree.Add(4);
+
+
 	
 	return 0;
 }
