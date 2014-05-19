@@ -6,6 +6,7 @@
     <ClCompile Include="fibonacci.cpp" />
     <ClCompile Include="hanoi.cpp" />
     <ClCompile Include="figure.cpp" />
+    <ClCompile Include="crc8.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="String.h" />
@@ -22,5 +23,7 @@
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="HashTable.h" />
+    <ClInclude Include="crc8.h" />
   </ItemGroup>
 </Project>

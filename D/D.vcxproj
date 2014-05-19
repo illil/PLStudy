@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="crc8.cpp" />
     <ClCompile Include="figure.cpp" />
     <ClCompile Include="factorial.cpp" />
     <ClCompile Include="fibonacci.cpp" />
@@ -157,6 +158,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="crc8.h" />
+    <ClInclude Include="HashTable.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="BinarySearch.h" />
     <ClInclude Include="figure.h" />
