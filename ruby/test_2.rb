@@ -1,6 +1,9 @@
 # Q1
 def mask(s, is_front, no_chars, is_positive)
-  no_mask_chars = is_positive ? s.size - no_chars : no_chars
+  s_size = s.size
+  no_mask_chars = is_positive ? s_size - no_chars : no_chars
+  no_mask_chars = 0 if no_mask_chars < 0
+  no_mask_chars = s_size if no_mask_chars > s_size
   reg = is_front == is_positive ? ".{#{no_mask_chars}}$" : ".{#{no_mask_chars}}"
   s.sub(/#{reg}/, '*' * no_mask_chars)
 end
